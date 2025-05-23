@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIBUSHIDHA J S Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --primary-green: #4CAF50;
+            --dark-grey: #333;
+            --medium-grey: #555;
+            --light-grey: #ddd;
+            --white: white;
+            --light-background: #f4f4f4;
+            --dark-green-hover: #45a049;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--light-background);
+            color: var(--dark-grey);
+        }
+        nav {
+            background-color: var(--dark-grey);
+            color: var(--white);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+            transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .logo span:hover {
+            color: var(--white);
+            text-shadow:
+                0 0 5px var(--primary-green),
+                0 0 10px var(--primary-green),
+                0 0 15px var(--primary-green);
+        }
+        .links {
+            display: flex;
+            gap: 15px;
+        }
+        .link a {
+            color: var(--white);
+            text-decoration: none;
+        }
+        .link a:hover {
+            color: var(--light-grey);
+        }
+        .contact-btn a {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .contact-btn a:hover {
+            background-color: var(--dark-green-hover);
+        }
+        .hamburg {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: var(--dark-grey);
+            color: var(--white);
+            padding: 10px 20px;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .dropdown a{
+            color: var(--white);
+            text-decoration: none;
+        }
+        .dropdown a:hover {
+            color: var(--light-grey);
+        }
+        .dropdown .cancel {
+            align-self: flex-end;
+            cursor: pointer;
+            font-size: 20px;
+            display: none; 
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            font-size: 32px;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--light-grey);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        #home .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #home .image img {
+            max-width: 300px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-green);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        }
+        #home .content {
+            margin-top: 20px;
+        }
+        #home .content h1 {
+            font-size: 36px;
+            color: var(--dark-grey);
+        }
+        #home .content h1 span {
+            color: var(--primary-green);
+        }
+        #home .typewriter {
+            font-size: 24px;
+            color: var(--medium-grey);
+            min-height: 30px;
+            display: inline-block;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .05em;
+        }
+        #home .typewriter span {
+            color: var(--primary-green);
+        }
+        #home .content p {
+            color: var(--medium-grey);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 15px auto 25px auto;
+        }
+        #home .social-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        #home .social-links a {
+            font-size: 28px;
+            color: var(--dark-grey);
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        #home .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        #home .social-links a:hover .fa-github {
+            color: #6e5494;
+        }
+        #home .social-links a:hover .fa-instagram {
+            color: #E1306C;
+        }
+        #home .social-links a:hover .fa-linkedin {
+            color: #0077B5;
+        }
+        #home .btn button {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #home .btn button:hover {
+            background-color: var(--dark-green-hover);
+            transform: translateY(-2px);
+        }
+        #about-me .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #about-me .about-text p {
+            color: var(--medium-grey);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        #skills .skill-item {
+            background-color: var(--light-background);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+            text-align: center;
+        }
+        #skills .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        #skills .skill-item i {
+            font-size: 40px;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+        #skills .skill-item h3 {
+            margin: 0;
+            color: var(--dark-grey);
+            font-size: 18px;
+            line-height: 1.3;
+            white-space: normal;
+        }
+        #education .education-item {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            border: 1px solid var(--light-grey);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        #education .education-item h3 {
+            color: var(--primary-green);
+            margin-top: 0;
+        }
+        #education .education-item p {
+            color: var(--medium-grey);
+            margin-bottom: 5px;
+        }
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        #projects .project-card {
+            background-color: var(--light-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: left;
+        }
+        #projects .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        #projects .project-card img {
+            width: 100%;
+            height: auto; 
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 16 / 9; 
+        }
+        #projects .project-info {
+            padding: 20px;
+        }
+        #projects .project-info h3 {
+            margin-top: 0;
+            color: var(--dark-grey);
+            font-size: 22px;
+        }
+        #projects .project-info p {
+            color: var(--medium-grey);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        #projects .project-links a {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        #projects .project-links a:hover {
+            background-color: var(--dark-green-hover);
+        }
+        #certificates .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        #certificates .certificate-card {
+            background-color: var(--light-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: left;
+        }
+        #certificates .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        #certificates .certificate-card img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover;
+            display: block;
+        }
+        #certificates .certificate-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        #certificates .certificate-info h3 {
+            margin-top: 0;
+            color: var(--dark-grey);
+            font-size: 22px;
+        }
+        #certificates .certificate-info p {
+            color: var(--medium-grey);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        #certificates .certificate-links a {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #certificates .certificate-links a:hover {
+            background-color: var(--dark-green-hover);
+        }
+        #contact .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        #contact .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark-grey);
+        }
+        #contact .contact-form input[type="text"],
+        #contact .contact-form input[type="email"],
+        #contact .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-grey);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #contact .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        #contact .contact-form button {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #contact .contact-form button:hover {
+            background-color: var(--dark-green-hover);
+            transform: translateY(-2px);
+        }
+        #contact .contact-info {
+            margin-top: 30px;
+            font-size: 18px;
+            color: var(--medium-grey);
+        }
+        #contact .contact-info p {
+            margin-bottom: 10px;
+        }
+        #contact .contact-info a {
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+        #contact .contact-info a:hover {
+            text-decoration: underline;
+        }
+        #contact .contact-info .icon {
+            margin-right: 8px; 
+            font-size: 1.2em; 
+            color: var(--primary-green); 
+            vertical-align: middle; 
+        }
+        footer {
+            background-color: var(--dark-grey);
+            color: var(--light-grey);
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        @media screen and (max-width: 768px) {
+            .links {
+                display: none;
+            }
+            .contact-btn {
+                display: none;
+            }
+            .hamburg {
+                display: block;
+            }
+            .dropdown .cancel {
+                display: block;
+            }
+            .nav-container {
+                padding: 0 15px;
+            }
+            #home .image img {
+                max-width: 250px;
+            }
+            #home .content h1 {
+                font-size: 30px;
+            }
+            #home .typewriter {
+                font-size: 20px;
+            }
+            #home .content p {
+                font-size: 15px;
+                padding: 0 10px;
+            }
+            #home .social-links a {
+                font-size: 24px;
+            }
+            section {
+                padding: 15px;
+                margin: 15px auto;
+            }
+            section h2 {
+                font-size: 26px;
+                margin-bottom: 20px;
+            }
+            #skills .skills-grid {
+                
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            #skills .skill-item {
+                padding: 15px 10px; 
+            }
+            #skills .skill-item h3 {
+                font-size: 17px; 
+                white-space: normal; 
+            }
+            #projects .projects-grid,
+            #certificates .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+            #projects .project-card img,
+            #certificates .certificate-card img {
+                height: 180px; 
+                aspect-ratio: unset; 
+            }
+        }
+        @media screen and (min-width: 769px) {
+            .links {
+                display: flex !important;
+            }
+            .contact-btn {
+                display: block !important;
+            }
+            .hamburg {
+                display: none !important;
+            }
+            .dropdown {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home" style="color:var(--white); text-decoration:none;"><span>Vibushidha</span></a>
+            </div>
+            <div class="links">
+                <div class="link"><a href="#home">Home</a></div>
+                <div class="link"><a href="#about-me">About Me</a></div>
+                <div class="link"><a href="#skills">Skills</a></div>
+                <div class="link"><a href="#education">Education</a></div>
+                <div class="link"><a href="#projects">Projects</a></div>
+                <div class="link"><a href="#certificates">Certificates</a></div> <div class="link contact-btn"><a href="#contact">Contact</a></div>
+            </div>
+            <div class="hamburg">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="cancel"><i class="fas fa-times"></i></div>
+            <a href="#home">Home</a>
+            <a href="#about-me">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#certificates">Certificates</a> <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <section id="home">
+        <div class="main-container">
+            <div class="image">
+                <img src="images/home img 1.jpg" alt="Vibushidha">
+            </div>
+            <div class="content">
+                <h1>Hi I'm <span>Vibushidha</span></h1>
+                <div class="typewriter">I'm a <span>Frontend Developer</span></div>
+                <p>Welcome! I'm a first-year B.Tech AI&DS student at SSMIET, Dindigul, with a burgeoning interest in frontend development. I find immense satisfaction in transforming ideas into tangible, user-friendly digital experiences. Coupled with my enthusiasm for Artificial Intelligence, this portfolio represents my journey in leveraging technology to build innovative solutions.</p>
+                <div class="social-links">
+                    <a href="https://github.com/Vibushidha" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/vibushidha/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/vibushidha-j-s-28b8b733b/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <div class="btn">
+                    <a href="#contact"><button>Let's collaborate</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about-me">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Hello again! I'm Vibushidha J S, a passionate first-year B.Tech Artificial Intelligence and Data Science student at SSMIET, Dindigul. My academic journey isn't just about textbooks; it's fueled by a strong desire to explore the exciting convergence of creative design and intelligent systems. I'm genuinely fascinated by how these two seemingly different worlds can merge to create truly innovative and impactful digital experiences.</p>
+                <p>My passion for building comes alive in frontend development. I truly enjoy the process of designing and coding user interfaces that are both aesthetically pleasing and provide seamless digital experiences. What fascinates me most is the potential for AI to elevate these experiences, making applications more adaptive and intuitively responsive to user needs. My growing skill set in Python and basic SQL is already proving invaluable, allowing me to approach projects with an understanding of both the user-facing design and the critical data backbone.</p>
+                <p>Beyond my individual projects, I strongly believe in the power of shared knowledge. I find immense satisfaction in assisting fellow students with academic challenges, fostering a collaborative and supportive learning environment. This portfolio represents my early steps into the professional world, highlighting my dedication to crafting intelligent, user-centric digital experiences and my commitment to being a valuable, supportive member of any team or community.</p>
+            </div>
+        </div>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <h3>SQL (Basics)</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-python"></i>
+                <h3>Python (Basics)</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-comments"></i>
+                <h3>Communication</h3>
+            </div>
+        </div>
+    </section>
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Bachelor of Technology in Artificial Intelligence and Data Science</h3>
+            <p><strong>SSMIET, Dindigul</strong> | 2024 - 2028 (Expected)</p>
+            <p>Currently pursuing my B.Tech, focusing on core AI/DS concepts, machine learning algorithms, and data structures. Actively engaged in various coding challenges and frontend projects to apply theoretical knowledge.</p>
+        </div>
+        <div class="education-item">
+            <h3>Higher Secondary Certificate (HSC)(XII)</h3>
+            <p><strong> St. Joseph's Matriculation Higher Secondary School, Dindigul</strong> | 2024</p>
+            <p>Completed my 12th standard with Biology and Maths as my main stream, with a percentage of 76.3</p>
+        </div>
+        <div class="education-item">
+            <h3>Higher Secondary Certificate (HSC)(XI)</h3>
+            <p><strong> St. Joseph's Matriculation Higher Secondary School, Dindigul</strong> | 2023</p>
+            <p>Completed my 11th standard with Biology and Maths as my main stream, with a percentage of 77</p>
+        </div>
+        <div class="education-item">
+            <h3>Higher Secondary Certificate (HSC)(X)</h3>
+            <p><strong> St. Joseph's Matriculation Higher Secondary School, Dindigul</strong> | 2022</p>
+            <p>Completed my 10th standard , with a percentage of 87.2</p>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/project1.png" alt="Project 1 portfolio">
+                <div class="project-info">
+                    <h3>Portfolio</h3>
+                    <p>A dedicated platform showcasing my skills and academic journey. Built with HTML/CSS, ensuring optimal viewing across all devices. Utilizes HTML, CSS, and basic JavaScript for core functionality. Features smooth navigation, hover effects, and a mobile-friendly menu. Features an integrated contact form and social links, making it easy for visitors to connect directly. Building this portfolio as a first-year student reflects my proactive approach to learning and professional development.What started out as a fun little project turned into somethig great.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="certificates">
+        <h2>Certificates</h2>
+        <div class="certificate-grid">
+            <div class="certificate-card">
+                <img src="images/value added course.jpg" alt="VCA certificate">
+                <div class="certificate-info">
+                    <h3>Advance Excel</h3>
+                    <p>Certified in Microsoft Advance Excel, equipping me with strong skills in complex data manipulation and reporting using spreadsheets</p>
+                    <div class="certificate-links">
+                        <a href="value added course.jpg" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <img src="images/python foundation certification.png" alt="python">
+                <div class="certificate-info">
+                    <h3>Python Foundation certification</h3>
+                    <p>Earned the Python Foundation Certification through Infosys Springboard, building a solid base in Python programming for various applications.</p>
+                    <div class="certificate-links">
+                        <a href="python foundation certification.png" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-form">
+            <p>Have a question or want to collaborate? Feel free to reach out!</p>
+            <form action="https://formspree.io/f/mzzrqrgq" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="contact-info">
+            <p>You can also find me here:</p>
+            <p>
+                <i class="fas fa-envelope icon"></i> Email: <a href="mailto:vibushidha@gmail.com">vibushidha@gmail.com</a>
+            </p>
+            <p>
+                <i class="fas fa-phone-alt icon"></i> Phone: +91 8015598894
+            </p>
+        </div>
+    </section>
+    <footer>
+        &copy; 2025 Vibushidha J S. All rights reserved.
+    </footer>
+    <script>
+        const hamburg = document.querySelector('.hamburg');
+        const dropdown = document.querySelector('.dropdown');
+        const cancel = document.querySelector('.dropdown .cancel');
+        hamburg.addEventListener('click', () => {
+            dropdown.style.display = 'flex';
+        });
+        cancel.addEventListener('click', () => {
+            dropdown.style.display = 'none';
+        });
+        dropdown.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                dropdown.style.display = 'none';
+            });
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && dropdown.style.display === 'flex') {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
